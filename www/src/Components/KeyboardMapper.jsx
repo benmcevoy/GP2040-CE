@@ -61,9 +61,10 @@ export const validateMappings = (mappings, t) => {
 
 			const key = KEY_CODES.find(({ _, value }) => mappings[prop].key === value).label;
 
-			if (mappings[prop].key !== 0x00 && mappings[prop].key === mappings[otherProp].key) {
-				mappings[prop].error = t('Components:keyboard-mapper.error-conflict', { key });
-			} else if ((boards[import.meta.env.VITE_GP2040_BOARD].invalidKeys || []).filter(p => p === mappings[prop].key).length > 0) {
+			// if (mappings[prop].key !== 0x00 && mappings[prop].key === mappings[otherProp].key) {
+			// 	mappings[prop].error = t('Components:keyboard-mapper.error-conflict', { key });
+			// } else 
+			if ((boards[import.meta.env.VITE_GP2040_BOARD].invalidKeys || []).filter(p => p === mappings[prop].key).length > 0) {
 				mappings[prop].error = t('Components:keyboard-mapper.error-invalid', { key });
 			}
 		}
